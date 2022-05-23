@@ -4,6 +4,7 @@ const { sequelize } = require('./models/index')
 const { rootRouter } = require('./routers/index');
 const cors = require('cors');
 const app = express();
+const cookieParser = require('cookie-parser')
 const port = 9696
 
 app.use(cors());
@@ -13,6 +14,7 @@ app.use(express.static(publicPathDir))
 
 //use router
 app.use('/api/v1', rootRouter);
+app.use(cookieParser())
 
 app.listen(port, async () => {
   console.log(`App listening on port http://localhost:9696`)
