@@ -10,7 +10,7 @@ const port = 9696
 app.use(cors());
 app.use(express.json());
 const publicPathDir = path.join(__dirname, './public');
-app.use(express.static(publicPathDir))
+app.use("/public",express.static(publicPathDir))
 
 //use router
 app.use('/api/v1', rootRouter);

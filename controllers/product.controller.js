@@ -1,29 +1,37 @@
 const { Product } = require('../models');
 
 
+
+
 const createProduct = async (req, res) => {
-    const { name, price, priceDefaut, type, img, introduce } = req.body;
+    const { file } = req
+    const { name, price, priceDefaut, type, introduce } = req.body;
+    const urlImg = `http://34.229.140.188:9696/${file.path}`
+    // console.log(req.body, file.path)
+
     try {
-        const newProduct = await Product.create({ name, price, priceDefaut, type, img, introduce })
+
+        const newProduct = await Product.create({ name, price, priceDefaut, type, img:urlImg , introduce })
         res.status(201).send(newProduct)
     } catch (error) {
         res.status(500).send(error)
     }
 }
 
-const getAllProduct =async (req, res)=> {
+const getAllProduct = async (req, res) => {
     try {
-       const listProduct=await Product.findAll();
-       res.status(200).send(listProduct)
+        const listProduct = await Product.findAll();
+
+        res.status(200).send(listProduct)
     } catch (error) {
         res.status(500).send(error)
     }
 }
-const getDetailProduct = async (req,res)=>{
-    const {id} =req.params;
+const getDetailProduct = async (req, res) => {
+    const { id } = req.params;
     try {
         const detailProcduct = await Product.findOne({
-            where:{
+            where: {
                 id,
             }
         })
@@ -32,21 +40,21 @@ const getDetailProduct = async (req,res)=>{
         res.status(500).send(error)
     }
 }
-const updateProduct = async (req,res) =>{
-    const {id} = req.params;
+const updateProduct = async (req, res) => {
+    const { id } = req.params;
     const { name, price, priceDefaut, type, img, introduce } = req.body;
     try {
         const detailProcduct = await Product.findOne({
-            where:{
+            where: {
                 id,
             }
         });
-        detailProcduct.name=name;
-        detailProcduct.price=price;
-        detailProcduct.priceDefaut=priceDefaut;
-        detailProcduct.type=type;
-        detailProcduct.img=img;
-        detailProcduct.introduce=introduce;
+        detailProcduct.name = name;
+        detailProcduct.price = price;
+        detailProcduct.priceDefaut = priceDefaut;
+        detailProcduct.type = type;
+        detailProcduct.img = img;
+        detailProcduct.introduce = introduce;
 
         await detailProcduct.save();
         res.status(200).send(detailProcduct)
@@ -54,11 +62,11 @@ const updateProduct = async (req,res) =>{
         res.status(500).send(error)
     }
 }
-const deleteProduct = async (req,res)=>{
-    const {id} = req.params;
+const deleteProduct = async (req, res) => {
+    const { id } = req.params;
     try {
         await Product.destroy({
-            where:{
+            where: {
                 id
             }
         })
@@ -73,5 +81,5 @@ const deleteProduct = async (req,res)=>{
 
 
 module.exports = {
-    createProduct,getAllProduct,getDetailProduct,updateProduct,deleteProduct
+    createProduct, getAllProduct, getDetailProduct, updateProduct, deleteProduct
 }
