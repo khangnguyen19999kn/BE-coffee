@@ -1,36 +1,45 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Products', {
+    await queryInterface.createTable('deltailOrders', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      codeOrder: {
+        type: Sequelize.STRING
+      },
+      idSP: {
+        type: Sequelize.STRING
+      },
       name: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      price: {
         type: Sequelize.STRING
       },
-      priceDefaut: {
+      note: {
         type: Sequelize.STRING
       },
-      type: {
+      size_product: {
         type: Sequelize.STRING
       },
-      img: {
+      quantity: {
         type: Sequelize.STRING
       },
-      introduce: {
+      resultPrice: {
         type: Sequelize.STRING
       },
-    
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Products');
+    await queryInterface.dropTable('deltailOrders');
   }
 };
