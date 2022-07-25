@@ -76,7 +76,7 @@ const decodeToken = (req, res) => {
             if(["Admin","Client"].findIndex((ele)=>ele===decode.level)>-1){
                 res.status(200).send(decode);
 
-            }else res.status(403).send("Bạn không đủ trình")
+            }else res.status(403).send("Bạn không đủ trình thử lại xem")
 
         }
        
