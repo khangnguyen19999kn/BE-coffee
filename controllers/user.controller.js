@@ -40,7 +40,7 @@ const login = async (req, res) => {
             res.status(200).send({ messenger: "Thành công", token })
         }
         else res.status(500).send("Mật khẩu không đúng")
-    } else res.status(404).send("Sđt chưa được đăng ký")
+    } else res.status(404).send("Sđt chưa được đăng ký hoặc bạn không đủ quyền truy cập ")
 
 
 
@@ -68,12 +68,12 @@ const decodeToken = (req, res) => {
     
         const {exp_token}= decode;
        
-        // console.log()
+        console.log("Test")
         if(date.getTime()-exp_token>60000){
             res.status(401).send("Cookie quá date vui lòng đăng nhập lại")
         }
         else {
-            if(["Admin"].findIndex((ele)=>ele===decode.level)>-1){
+            if(["Admin","Client"].findIndex((ele)=>ele===decode.level)>-1){
                 res.status(200).send(decode);
 
             }else res.status(403).send("Bạn không đủ trình")
