@@ -7,7 +7,7 @@ const createOrder = async (req, res) => {
     const {listOrder} = req.body;
     
     try {
-        const newOrder= await cartOrder.create({fullName:fullname, phone, huongDan:HuongDan, diaChi:address, thanhToan:"Rồi"  })
+        const newOrder= await cartOrder.create({fullName:fullname, phone, huongDan:HuongDan, diaChi:address, thanhToan:"Chưa"  })
        const {id} = newOrder;
        const codeOrder=id
         for(const item of listOrder){
