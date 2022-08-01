@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "root",
-    "password": "Kn200499",
-    "database": "coffee_db",
-    "host": "127.0.0.1",
+    "username": "bde2afc4d4374c",
+    "password": "39bcdea6",
+    "database": "heroku_d77ffa173137112",
+    "host": "us-cdbr-east-06.cleardb.net",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "username": "bde2afc4d4374c",
+    "password": "39bcdea6",
+    "database": "heroku_d77ffa173137112",
+    "host": "us-cdbr-east-06.cleardb.net",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "bde2afc4d4374c",
+    "password": "39bcdea6",
+    "database": "heroku_d77ffa173137112",
+    "host": "us-cdbr-east-06.cleardb.net",
     "dialect": "mysql"
   }
 }
