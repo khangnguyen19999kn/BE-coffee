@@ -5,7 +5,7 @@ const { rootRouter } = require('./routers/index');
 const cors = require('cors');
 const app = express();
 const cookieParser = require('cookie-parser')
-const port = 9696
+const port = process.env.PORT || 9696
 
 app.use(cors());
 app.use(express.json());

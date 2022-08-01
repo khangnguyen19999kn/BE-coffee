@@ -73,7 +73,7 @@ const decodeToken = (req, res) => {
             res.status(401).send("Cookie quá date vui lòng đăng nhập lại")
         }
         else {
-            if(["Admin","Client"].findIndex((ele)=>ele===decode.level)>-1){
+            if(["Admin"].findIndex((ele)=>ele===decode.level)>-1){
                 res.status(200).send(decode);
 
             }else res.status(403).send("Bạn không đủ trình thử lại xem")
